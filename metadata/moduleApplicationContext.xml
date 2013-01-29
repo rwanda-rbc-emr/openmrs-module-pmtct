@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+	<!-- Beans to add to the current Application context definition -->
+
+<beans>
+
+	<bean id="pmtctUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
+			</list>
+		</property>
+		<property name="order"><value>2</value></property>
+		<property name="mappings">
+			<props>
+				<prop key="**/pmtctViewPortlet.portlet">pmtctViewController</prop>
+				<prop key="module/@MODULE_ID@/addCPNInfoForm.form">addCPNInfoFormController</prop>
+				<prop key="module/@MODULE_ID@/addMaternityForm.form">addMaternityFormController</prop>
+				<prop key="module/@MODULE_ID@/updatePatientInfo.form">updatePatientInfoFormController</prop>
+				<prop key="module/@MODULE_ID@/viewCPNInfo.htm">viewCPNInfoController</prop>
+				<prop key="module/@MODULE_ID@/viewMaternityInfo.htm">viewMaternityInfoController</prop>
+				<prop key="module/@MODULE_ID@/followupMotherForm.form">followupMotherController</prop>
+				<prop key="module/@MODULE_ID@/patientInPmtct.list">pmtctHomeGeneralController</prop>
+				<prop key="module/@MODULE_ID@/generalStatIncpn.list">patientInCpnController</prop>
+				<prop key="module/@MODULE_ID@/cpnMoisDeRapportage.list">patientInCpnController</prop>
+				<prop key="module/@MODULE_ID@/cpnCouplesDiscordant.list">patientInCpnController</prop>
+				<prop key="module/@MODULE_ID@/generalStatsInMaternity.list">expectedMaternityPatientController</prop>
+				<prop key="module/@MODULE_ID@/expectedPatientInMaternity.list">expectedMaternityPatientController</prop>
+				<prop key="module/@MODULE_ID@/patientTestedInDeliveryroom.list">expectedMaternityPatientController</prop>
+				<prop key="module/@MODULE_ID@/patientWhoMissedMaternityEncounter.list">expectedMaternityPatientController</prop>
+				<prop key="module/@MODULE_ID@/config.htm">configController</prop>
+				<prop key="module/@MODULE_ID@/viewMotherFollowUp.htm">viewMotherFollowUpInfoController</prop>
+				<prop key="module/@MODULE_ID@/childTestForm.form">childTestFormController</prop>
+				<prop key="module/@MODULE_ID@/infantResume.list">infantResumeController</prop>
+				<prop key="module/@MODULE_ID@/expectedChildInPCR.list">infantResumeController</prop>
+				<prop key="module/@MODULE_ID@/expectedChildInSerologyFor9Month.list">infantResumeController</prop>
+				<prop key="module/@MODULE_ID@/expectedChildInSerologyFor18Month.list">infantResumeController</prop>
+				<prop key="module/@MODULE_ID@/moisDeRapportageInfantTest.list">infantResumeController</prop>
+				<prop key="module/@MODULE_ID@/pmtctFlowsheet.list">flowsheetController</prop>
+				<prop key="module/@MODULE_ID@/chart.htm">hivPieChartController</prop>
+				<prop key="module/@MODULE_ID@/familyPlanning.form">familyPlanningController</prop>
+				<prop key="module/@MODULE_ID@/graphicandstatistic.htm">graphicsAndStatisticsController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Controllers -->
+	
+	<bean id="hivStatusPieChartView" class="@MODULE_PACKAGE@.web.view.chart.HivStatusPieChartView" />
+	<bean id="maternityPieChartView" class="@MODULE_PACKAGE@.web.view.chart.MaternityPieChartView" />
+	<bean id="infantPieChartView" class="@MODULE_PACKAGE@.web.view.chart.InfantPieChartView" />
+	<bean id="pcrPieChartView" class="@MODULE_PACKAGE@.web.view.chart.InfantPCRPieChartView" />
+	
+	<bean id="hivPieChartController" class="@MODULE_PACKAGE@.web.controller.ChartStatsQueryController">
+		<property name="chartViews">
+			<map>
+				<entry key="hivStatus"><ref bean="hivStatusPieChartView" /></entry>
+				<entry key="maternity"><ref bean="maternityPieChartView" /></entry>
+				<entry key="infant"><ref bean="infantPieChartView" /></entry>
+				<entry key="pcr"><ref bean="pcrPieChartView" /></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="pmtctViewController" class="@MODULE_PACKAGE@.web.controller.PmtctViewPortletController" />	
+	
+	<bean id="graphicsAndStatisticsController" class="@MODULE_PACKAGE@.web.controller.PMTCTGraphicsAndStatisticsController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctGraphicsAndStatistics</value></property>
+	</bean>	
+	
+	<bean id="configController" class="@MODULE_PACKAGE@.web.controller.PmtctConfigurationController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctConfig</value></property>
+	</bean>	
+	
+	<bean id="familyPlanningController" class="@MODULE_PACKAGE@.web.controller.PmtctFamilyPlanningController">
+		<property name="viewName"><value>/module/@MODULE_ID@/familyPlanning</value></property>
+	</bean>
+	
+	<bean id="childTestFormController" class="@MODULE_PACKAGE@.web.controller.FollowupChildController">
+		<property name="formView"><value>/module/@MODULE_ID@/followupChild</value></property>
+		<property name="successView"><value>/patientDashboard.form?patientId=</value></property>
+		<property name="commandName"><value>pmtctChildTest</value></property>
+		<property name="commandClass" value="@MODULE_PACKAGE@.PmtctChildInformation"></property>
+		<property name="validator">
+			<ref bean="pmtctChildTestValidator" />
+		</property>
+	</bean>
+
+	<bean id="viewCPNInfoController" class="@MODULE_PACKAGE@.web.controller.viewCPNInfoController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctViewCPNInfo</value></property>
+	</bean>
+	
+	<bean id="flowsheetController" class="@MODULE_PACKAGE@.web.controller.PmtctFlowsheet">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctFlowsheet</value></property>
+	</bean>
+			
+	<bean id="viewMaternityInfoController" class="@MODULE_PACKAGE@.web.controller.viewCPNInfoController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctViewCPNInfo</value></property>
+	</bean>
+	
+	<bean id="viewMotherFollowUpInfoController" class="@MODULE_PACKAGE@.web.controller.viewCPNInfoController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctViewCPNInfo</value></property>
+	</bean>
+	
+	<bean id="pmtctHomeGeneralController" class="@MODULE_PACKAGE@.web.controller.PmtctHomeGeneralController">
+		<property name="viewName"><value>/module/@MODULE_ID@/homePmtct</value></property>
+	</bean>
+	
+	<bean id="patientInCpnController" class="@MODULE_PACKAGE@.web.controller.PatientInCPNController">
+		<property name="viewName"><value>/module/@MODULE_ID@/expectedPatientInCPN</value></property>
+	</bean>
+	
+	<bean id="expectedMaternityPatientController" class="@MODULE_PACKAGE@.web.controller.ExpectedMaternityPatientController">
+		<property name="viewName"><value>/module/@MODULE_ID@/expectedMaternityPatient</value></property>
+	</bean>
+	
+	<bean id="infantResumeController" class="@MODULE_PACKAGE@.web.controller.PmtctInfantStatController">
+		<property name="viewName"><value>/module/@MODULE_ID@/childStat</value></property>
+	</bean>
+
+	<bean id="addCPNInfoFormController" class="@MODULE_PACKAGE@.web.controller.PmtctAddCPNInformationController">
+		<property name="commandName"><value>pmtctCPNInfo</value></property>
+		<property name="commandClass" value="@MODULE_PACKAGE@.PmtctCPNInformation"></property>
+		<property name="formView"><value>/module/@MODULE_ID@/pmtctAddCPNInfoForm</value></property>
+		<property name="successView"><value>/patientDashboard.form?patientId=</value></property>
+		<property name="validator">
+			<ref bean="pmtctCPNInfoValidator" />
+		</property>
+	</bean>
+	
+	<!-- maternity  bean -->
+	<bean id="addMaternityFormController" class="@MODULE_PACKAGE@.web.controller.PmtctMaternityController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctMaternityForm</value></property>
+		<!-- <property name="commandName"><value>pmtctMaternity</value></property>
+		<property name="commandClass" value="@MODULE_PACKAGE@.PmtctMaternity"></property>
+		<property name="formView"><value>/module/@MODULE_ID@/pmtctMaternityForm</value></property>
+		<property name="successView"><value>/patientDashboard.form?patientId=</value></property>
+		<property name="validator">
+			<ref bean="pmtctMaternityValidator" />
+		</property> -->
+	</bean>
+	
+	<bean id="updatePatientInfoFormController" class="@MODULE_PACKAGE@.web.controller.UpdatePatientInformationController">
+		<property name="viewName" value="addCPNInfoForm.form" />
+	</bean>
+	
+	<bean id="followupMotherController" class="@MODULE_PACKAGE@.web.controller.FollowupMotherController">
+		<property name="viewName"><value>/module/@MODULE_ID@/pmtctFollowupMotherForm</value></property>
+		<!-- <property name="commandName"><value>pmtctFollowupMother</value></property>
+		<property name="commandClass" value="@MODULE_PACKAGE@.PmtctFollowupMother"></property>
+		<property name="formView"><value>/module/@MODULE_ID@/pmtctFollowupMotherForm</value></property>
+		<property name="successView"><value>/patientDashboard.form?patientId=</value></property>
+		<property name="validator">
+			<ref bean="pmtctFollowupMotherValidator" />
+		</property> -->
+	</bean>
+	
+	<!-- ========================= Validators ========================= -->
+	
+	<bean id="pmtctMaternityValidator" class="@MODULE_PACKAGE@.validator.PmtctMaternityValidator" />
+	<bean id="pmtctCPNInfoValidator" class="@MODULE_PACKAGE@.validator.PmtctCPNInformationValidator" />
+	<bean id="pmtctChildTestValidator" class="@MODULE_PACKAGE@.validator.PmtctFollowupChildValidator" />
+	<bean id="pmtctFollowupMotherValidator" class="@MODULE_PACKAGE@.validator.PmtctFollowupMotherValidator" />
+	
+	<!-- ========================= Services ========================= -->
+	
+	<bean parent="serviceContext">
+        <property name="moduleService">
+            <list>
+                <value>org.openmrs.module.pmtct.db.PmtctService</value>
+                <bean
+                    class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+                    <property name="transactionManager">
+                        <ref bean="transactionManager" />
+                    </property>
+                    <property name="target">
+                        <bean
+                            class="@MODULE_PACKAGE@.db.hibernate.HibernatePmtctDAO">
+                            <property name="sessionFactory">
+                                <ref bean="sessionFactory" />
+                            </property>
+                        </bean>
+                    </property>
+                    <property name="preInterceptors">
+                        <list>
+                            <ref bean="authorizationInterceptor" />
+                        </list>
+                    </property>
+                    <property name="transactionAttributeSource">
+                        <bean
+                            class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
+                    </property>
+                </bean>
+            </list>
+        </property>
+
+    </bean>
+    
+    <!-- ========================= other beans ========================= -->
+    
+    <bean class="@MODULE_PACKAGE@.util.ContextProvider" />
+	
+</beans>

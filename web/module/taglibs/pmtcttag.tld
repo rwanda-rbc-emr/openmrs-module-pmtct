@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>PMTCT tag library</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>pmtcttag</short-name>
+	<uri>http://openmrs.org/module/pmtct</uri>
+	
+	<function>
+		<name>personName</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getPersonNames(java.lang.Integer)</function-signature>
+	</function>
+
+	<function>
+		<name>childMother</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>org.openmrs.Patient getChildMother(java.lang.Integer)</function-signature>
+	</function>
+
+	<function>
+		<name>personIdentifier</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>org.openmrs.PatientIdentifier personIdentifier(org.openmrs.Patient,java.lang.Integer)</function-signature>
+	</function>
+
+	<function>
+		<name>personIdentifierByIds</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String personIdentifierByPatientIdAndIdentifierTypeId(java.lang.Integer,java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>personAttribute</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String personAttribute(org.openmrs.Patient,java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>isPatientDead</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String isPatientDied(java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>encounterId</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String encounterId(java.util.List,java.util.Date,java.util.Date)</function-signature>
+	</function>
+	
+	<function>
+		<name>currentEncounterId</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String currentEncounterId(java.util.List,java.util.Date)</function-signature>
+	</function>
+	
+	<function>
+		<name>observationValue</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String observationValue(org.openmrs.Obs)</function-signature>
+	</function>
+	
+	<function>
+		<name>observationConceptName</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String observationConceptName(org.openmrs.Obs)</function-signature>
+	</function>
+
+	<function>
+		<name>observationValueByConcept</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String observationValueByConcept(org.openmrs.Encounter,java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>lastCPNEncounterByPatientId</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>org.openmrs.Encounter getCPNEncounterInfo(java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>lastMaternityEncounterByPatientId</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>org.openmrs.Encounter getMaternityEncounterInfo(java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>lastObsValueByConceptId</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String lastObsValueByConceptId(java.lang.Integer, java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>encounterTypeNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getEncounterTypeNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>programNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getProgramNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>attributeTypeNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getAttributeTypeNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>identifierTypeNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getIdentifierTypeNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>drugOrderTypeNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getDrugOrderTypeNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>relationshipTypeNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getRelationshipTypeNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>conceptNameById</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getConceptNameById(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>conceptNumericUnit</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getConceptNumericUnit(java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<name>patientIdentifier</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String getIdentifierByPatientIdAndIdentifierTypeId(java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<description>Checks if a concept with a given ID exists</description>
+		<name>checkIfConceptExistByIdAsString</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String checkIfConceptExistByIdAsString(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<name>gpParser</name>
+		<function-class>org.openmrs.module.pmtct.PMTCTModuleTag</function-class>
+		<function-signature>java.lang.String globalPropertyParser(java.lang.String)</function-signature>
+	</function>
+	
+</taglib>
