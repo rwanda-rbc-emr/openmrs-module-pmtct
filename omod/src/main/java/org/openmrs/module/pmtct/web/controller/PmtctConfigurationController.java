@@ -71,7 +71,7 @@ public class PmtctConfigurationController extends ParameterizableViewController 
 //			pmtctConfig.put("existingAttributeTypes", Context.getPersonService().getAllPersonAttributeTypes());
 			pmtctConfig.put("existingEncTypes", Context.getEncounterService().getAllEncounterTypes());
 			pmtctConfig.put("existingIdentifierTypes", Context.getPatientService().getAllPatientIdentifierTypes());
-			pmtctConfig.put("existingDrugOrderTypes", Context.getOrderService().getAllOrderTypes());
+			pmtctConfig.put("existingDrugOrderTypes", Context.getOrderService().getOrderTypes(false));
 			pmtctConfig.put("existingRelationshipTypes", Context.getPersonService().getAllRelationshipTypes());
 			
 			mav.addObject("pmtctConfigured", Context.getAdministrationService().getGlobalPropertyObject("pmtct.configured"));

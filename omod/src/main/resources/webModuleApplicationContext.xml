@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
-	<!-- Beans to add to the current Application context definition -->
-
-<beans>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
 	<bean id="pmtctUrlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -163,40 +168,6 @@
 	<bean id="pmtctCPNInfoValidator" class="@MODULE_PACKAGE@.validator.PmtctCPNInformationValidator" />
 	<bean id="pmtctChildTestValidator" class="@MODULE_PACKAGE@.validator.PmtctFollowupChildValidator" />
 	<bean id="pmtctFollowupMotherValidator" class="@MODULE_PACKAGE@.validator.PmtctFollowupMotherValidator" />
-	
-	<!-- ========================= Services ========================= -->
-	
-	<bean parent="serviceContext">
-        <property name="moduleService">
-            <list>
-                <value>org.openmrs.module.pmtct.db.PmtctService</value>
-                <bean
-                    class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-                    <property name="transactionManager">
-                        <ref bean="transactionManager" />
-                    </property>
-                    <property name="target">
-                        <bean
-                            class="@MODULE_PACKAGE@.db.hibernate.HibernatePmtctDAO">
-                            <property name="sessionFactory">
-                                <ref bean="sessionFactory" />
-                            </property>
-                        </bean>
-                    </property>
-                    <property name="preInterceptors">
-                        <list>
-                            <ref bean="authorizationInterceptor" />
-                        </list>
-                    </property>
-                    <property name="transactionAttributeSource">
-                        <bean
-                            class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
-                    </property>
-                </bean>
-            </list>
-        </property>
-
-    </bean>
     
     <!-- ========================= other beans ========================= -->
     

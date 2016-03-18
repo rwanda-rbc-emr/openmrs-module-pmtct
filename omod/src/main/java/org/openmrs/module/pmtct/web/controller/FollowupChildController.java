@@ -36,6 +36,7 @@ import org.openmrs.User;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.EncounterService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.mohorderentrybridge.api.MoHOrderEntryBridgeService;
 import org.openmrs.module.pmtct.PMTCTConfiguration;
 import org.openmrs.module.pmtct.PmtctChildInformation;
 import org.openmrs.module.pmtct.util.PMTCTConfigurationUtils;
@@ -126,7 +127,7 @@ public class FollowupChildController extends SimpleFormController {
 			
 			map.put("patient", pmtctChildTest.getPatient());
 			
-			drugOrdersTmp = Context.getOrderService().getDrugOrdersByPatient(
+			drugOrdersTmp = Context.getService(MoHOrderEntryBridgeService.class).getDrugOrdersByPatient(
 			    Context.getPatientService().getPatient(Integer.parseInt(request.getParameter("patientId"))));
 			for (DrugOrder d : drugOrdersTmp) {
 				if (d.getConcept().getConceptId() == PMTCTConstants.PMTCT_DRUG_ORDER_CONCEPT_RELATED_ID)

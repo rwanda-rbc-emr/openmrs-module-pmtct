@@ -288,7 +288,7 @@ public class PMTCTModuleTag {
 			return "";
 		EncounterType enctype = null;
 		try {
-			enctype = Context.getEncounterService().getEncounterType(Integer.parseInt(encounterTypeId));
+			enctype = encounterTypeId != null && !encounterTypeId.equals("null") ? Context.getEncounterService().getEncounterType(Integer.parseInt(encounterTypeId)) : null;
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -52,7 +52,7 @@ public class PMTCTConfigurationUtils {
 	public static boolean isConfigured() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("pmtct.configured");
-		return (gp != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
+		return (gp != null && gp.getPropertyValue() != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
 				"true") == 0) ? true : false) : true;
 	}
 	
@@ -124,7 +124,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getCPNEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.encounterType.anc");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -136,7 +136,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getMaternityEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.encounterType.maternity");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -149,7 +149,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getMotherFollowUpEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.encounterType.motherfollowup");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -161,7 +161,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getPCRTestEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.encounterType.pcr");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -174,7 +174,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getSerology9MonthEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.encounterType.serology9month");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -188,7 +188,7 @@ public class PMTCTConfigurationUtils {
 	public static int getSerology18MonthEncounterTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 		        .getGlobalPropertyObject("pmtct.encounterType.serology18month");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -209,79 +209,79 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static int getBornAliveConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.bornalive");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getBornDeadConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.borndead");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getBornStatusConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.bornstatus");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getHivTestInDeliveryRoomConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 		        .getGlobalPropertyObject("pmtct.concept.hivtestindeliveryroom");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getPatientArrivedWithPartnerConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
 		    "pmtct.concept.patientarrivedwithpartner");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getPartnerTestedSeparatelyConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
 		    "pmtct.concept.partnertestedseparately");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getHivTestDateForPartnerConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.hivtestdateofpartner");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getResultHivTestReceptionDateConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
 		    "pmtct.concept.resulthivtestreceptiondate");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getSyphilisTestDateConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.syphilistestdate");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getResultSyphilisTestReceptionDateConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(
 		    "pmtct.concept.resultsyphilistestreceptiondate");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getReceptionDateCD4CountConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 		        .getGlobalPropertyObject("pmtct.concept.receptiondatecd4count");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
 	public static int getReceptionDateBedNetConceptId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.concept.receptiondatebednet");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -304,7 +304,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getDrugOrderTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.ordertype");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -317,7 +317,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getCPNIdentifierTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.identifiertype.anc");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -330,7 +330,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getRelationshipTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.relationshiptype.motherchild");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 }

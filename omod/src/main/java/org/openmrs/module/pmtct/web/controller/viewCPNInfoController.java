@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.openmrs.DrugOrder;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.mohorderentrybridge.api.MoHOrderEntryBridgeService;
 import org.openmrs.module.pmtct.util.FileExporter;
 import org.openmrs.module.pmtct.util.PMTCTConfigurationUtils;
 import org.openmrs.module.pmtct.util.PMTCTConstants;
@@ -50,7 +51,7 @@ public class viewCPNInfoController extends ParameterizableViewController {
 			    Integer.parseInt(request.getParameter("encounterId"))));
 			mav.addObject("cpnNumberIdentifierID", PMTCTConfigurationUtils.getCPNIdentifierTypeId());
 			
-			List<DrugOrder> drugOrdersTmp = Context.getOrderService().getDrugOrdersByPatient(
+			List<DrugOrder> drugOrdersTmp = Context.getService(MoHOrderEntryBridgeService.class).getDrugOrdersByPatient(
 			    Context.getPatientService().getPatient(Integer.parseInt(request.getParameter("patientId"))));
 			List<DrugOrder> drugOrders = new ArrayList<DrugOrder>();
 			for (DrugOrder d : drugOrdersTmp) {

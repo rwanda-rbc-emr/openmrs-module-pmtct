@@ -494,8 +494,8 @@ public class FileExporter {
 			for (DrugOrder drugOrder : drugOrderList) {
 				count += 1;
 				outputStream.println(count + ", " + drugOrder.getDrug().getName() + ", " + drugOrder.getDose() + " "
-				        + drugOrder.getUnits() + ", " + drugOrder.getFrequency() + ", " + drugOrder.getInstructions() + ", "
-				        + sdf.format(drugOrder.getStartDate()) + ", " + sdf.format(drugOrder.getDiscontinuedDate()));
+				        + drugOrder.getDoseUnits().getName().getName() + ", " + drugOrder.getFrequency() + ", " + drugOrder.getInstructions() + ", "
+				        + sdf.format(drugOrder.getEffectiveStartDate()) + ", " + sdf.format(drugOrder.getEffectiveStopDate()));
 			}
 			
 			outputStream.flush();
