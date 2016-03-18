@@ -4,9 +4,9 @@
 <module configVersion="1.0">
 
 	<!-- PMTCT Module Properties -->
-	<id>pmtct</id>
-	<name>MOH-TRAC : PMTCT</name>
-	<version>0.1.3.8</version>
+	<id>@MODULE_ID@</id>
+	<name>@MODULE_NAME@</name>
+	<version>@MODULE_VERSION@</version>
 	<package>org.openmrs.module.@MODULE_ID@
 	</package>
 	<author>Yves GAKUBA</author>
@@ -27,7 +27,7 @@
 	-->
 	<!-- /PMTCT Module Properties -->
 
-	<require_version>1.6.2.12911</require_version>
+	<require_version>${openMRSVersion}</require_version>
 
 	<!-- Extensions configuration-->
 	<extension>
