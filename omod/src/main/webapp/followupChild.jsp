@@ -1,5 +1,5 @@
 <%@ include file="template/localIncludes.jsp"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="springform" uri="/WEB-INF/taglibs/spring-form.tld" %>
 
 <!-- *************************************** -->
 
@@ -61,7 +61,7 @@
 
 <br/> -->
 
-<form:form commandName="pmtctChildTest"
+<springform:form commandName="pmtctChildTest"
 	action="childTestForm.form?patientId=${patient.patientId}&encounterType=${param.encounterType}"
 	method="post">
 	
@@ -262,7 +262,7 @@
 		<div style="clear:both;"></div>
 	</div>
 	
-</form:form>
+</springform:form>
 
 <script type="text/javascript">
 

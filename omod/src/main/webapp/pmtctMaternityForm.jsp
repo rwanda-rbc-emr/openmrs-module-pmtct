@@ -1,5 +1,4 @@
 <%@ include file="template/localIncludes.jsp"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- ************************************************************* -->
 
 <openmrs:require privilege="Add Maternity information" otherwise="/login.htm" redirect="/module/@MODULE_ID@/addMaternityForm.form" />
