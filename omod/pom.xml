@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.openmrs.module</groupId>
 		<artifactId>pmtct</artifactId>
-		<version>0.1.3.8-SNAPSHOT</version>
+		<version>0.1.3.8</version>
 	</parent>
 	<artifactId>pmtct-omod</artifactId>
 	<packaging>jar</packaging>
